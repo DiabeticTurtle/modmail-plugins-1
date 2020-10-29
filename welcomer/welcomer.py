@@ -91,12 +91,9 @@ class Welcomer(commands.Cog):
                 {'$set': {'welcomer': {'channel': str(channel.id), 'message': message}}},
                 upsert=True
             )
-            await ctx.send(f'Message sent to {channel.mention} for testing.\nNote: invites cannot be rendered in test message')
+            await ctx.send(f'Message sent to {channel.mention} Message id {message.id} \n')
         else:
             await ctx.send('Invalid welcome message syntax.')
-
-  
-
 
 def setup(bot):
     bot.add_cog(Welcomer(bot))

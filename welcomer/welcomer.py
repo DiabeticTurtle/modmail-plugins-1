@@ -69,7 +69,7 @@ class Welcomer(commands.Cog):
 
     @commands.has_permissions(manage_guild=True)
     @commands.command()
-    async def welcomer(self, ctx, channel: discord.TextChannel, *, message):
+    async def send(self, ctx, channel: discord.TextChannel, *, message):
         """Sets up welcome command. Check [here](https://github.com/fourjr/modmail-plugins/blob/master/welcomer/README.md)
         for complex usage.
         """
@@ -94,6 +94,7 @@ class Welcomer(commands.Cog):
             await ctx.send(f'Message sent to {channel.mention} Message id {message.id}')
         else:
             await ctx.send('Invalid welcome message syntax.')
+            
 
 def setup(bot):
     bot.add_cog(Welcomer(bot))

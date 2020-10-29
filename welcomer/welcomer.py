@@ -95,6 +95,5 @@ class Welcomer(commands.Cog):
         else:
             await ctx.send('Invalid welcome message syntax.')
             
-
 def setup(bot):
     bot.add_cog(Welcomer(bot))

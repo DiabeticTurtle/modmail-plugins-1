@@ -91,7 +91,7 @@ class Welcomer(commands.Cog):
                 {'$set': {'welcomer': {'channel': str(channel.id), 'message': message}}},
                 upsert=True
             )
-            await ctx.send(f'Message sent to {channel.mention}')
+            await ctx.send(f'Message sent to {channel.mention} ')
         else:
             await ctx.send('Invalid welcome message syntax.')
 

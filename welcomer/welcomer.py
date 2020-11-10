@@ -7,7 +7,7 @@ from discord.ext import commands
 from .models import apply_vars, SafeString
 
 
-class Welcomer(commands.Cog):
+class Embeds(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.db = bot.plugin_db.get_partition(self)
@@ -70,7 +70,7 @@ class Welcomer(commands.Cog):
     @commands.has_permissions(manage_guild=True)
     @commands.command()
     async def send(self, ctx, channel: discord.TextChannel, *, message):
-        """Sets up welcome command. Check [here](https://github.com/fourjr/modmail-plugins/blob/master/welcomer/README.md)
+        """Sends custom embeds, Check [here](https://github.com/fourjr/modmail-plugins/blob/master/welcomer/README.md)
         for complex usage.
         """
         # Example usage: `welcomer #general Hello {member.name}`
@@ -88,12 +88,12 @@ class Welcomer(commands.Cog):
             await channel.send(**formatted_message)
             await self.db.find_one_and_update(
                 {'_id': 'config'},
-                {'$set': {'welcomer': {'channel': str(channel.id), 'message': message}}},
+                {'$set': {'Embeds': {'channel': str(channel.id), 'message': message}}},
                 upsert=True
             )
             await ctx.send(f'Message sent to {channel.mention} ')
         else:
-            await ctx.send('Invalid welcome message syntax.')
+            await ctx.send('Invalid message syntax.')
 
 def setup(bot):
-    bot.add_cog(Welcomer(bot))
+    bot.add_cog(Embeds(bot))
